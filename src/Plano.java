@@ -58,10 +58,12 @@ public class Plano {
     public void atualizarValor() {
         double taxa = 0.1;
         this.valor += this.valor * taxa;
+        System.out.println("\nValor atualizado para R$" + this.valor);
     }
 
-    public void atualizarValor(int valorTaxa) {
+    public void atualizarValor(double valorTaxa) {
         double taxa = valorTaxa / 100;
         this.valor += this.valor * taxa;
+        System.out.println("\nValor atualizado para R$" + this.valor);
     }
 }

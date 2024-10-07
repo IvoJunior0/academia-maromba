@@ -16,8 +16,8 @@ public class Maromba {
     public static Plano plano1 = new Plano();
 
     // Variáveis
-    public static int opcaoAluno, opcaoColaborador, opcaoDado, opcaoObjeto;
-    public static double valor;
+    public static int opcaoAluno, opcaoColaborador, opcaoDado, opcaoObjeto, opcaoTaxa;
+    public static double valorPlano, valorTaxa;
     public static String nome;
     public static boolean condicao = false;
     public static double novoValor = 0.0;
@@ -48,15 +48,15 @@ public class Maromba {
                     nome = escolherNome();
 
                     System.out.println("\nValor do plano:");
-                    valor = escolherValor();
+                    valorPlano = escolherValor();
 
-                    escolherAluno(false);
+                    escolherAluno();
 
-                    escolherColaborador(false);
+                    escolherColaborador();
 
                     settarObjetosAuxiliares();
 
-                    plano1.cadastrarDados(nome, valor, alunoAuxiliar, colaboradorAuxiliar);
+                    plano1.cadastrarDados(nome, valorPlano, alunoAuxiliar, colaboradorAuxiliar);
                     break;
 
                 // IMPRIMIR
@@ -91,10 +91,10 @@ public class Maromba {
                             novoValor = escolherValor();
                             break;
                         case 3: // Aluno
-                            escolherAluno(true);
+                            escolherAluno();
                             break;
                         case 4: // Colaborador
-                            escolherColaborador(true);
+                            escolherColaborador();
                             break;
                     }
 
@@ -102,7 +102,34 @@ public class Maromba {
 
                     plano1.alterarDados(opcaoDado, novoNome, novoValor, alunoAuxiliar, colaboradorAuxiliar);
                     break;
+
+                // ATUALIZAR
                 case 4:
+                    if (plano1.nome == "Não Cadastrado" && plano1.valor == -1) {
+                        System.out.println("\nPlano ainda não foi cadastrado");
+                        break;
+                    }
+
+                    System.out.println("\nUsar taxa fixa ou nova?");
+                    System.out.println("1. - Taxa fixa (acréscimo de 10%)");
+                    System.out.println("2. - Taxa nova (acréscimo de x%)");
+                    opcaoTaxa = escolherOpcao(2);
+
+                    switch (opcaoTaxa) {
+                        case 1:
+                            plano1.atualizarValor();
+                            break;
+                        case 2:
+                            System.out.println("\nEscolha a nova taxa:");
+                            valorTaxa = escolherValor();
+                            plano1.atualizarValor(valorTaxa);
+                        default:
+                            break;
+                    }
+                    break;
+
+                // SAIR
+                case 5:
                     break;
                 default:
                     System.out.println("\nOpção inválida");
@@ -152,17 +179,15 @@ public class Maromba {
         return valor;
     }
 
-    public static void escolherAluno(boolean quebrarLinha) {
-        String newline = (quebrarLinha) ? "\n" : "";
-        System.out.printf("\nEscolha o aluno:\n", newline);
+    public static void escolherAluno() {
+        System.out.println("\nEscolha o aluno:");
         System.out.println("1. - Ivo");
         System.out.println("2. - Grazi");
         opcaoAluno = escolherOpcao(2);
     }
 
-    public static void escolherColaborador(boolean quebrarLinha) {
-        String newline = (quebrarLinha) ? "\n" : "";
-        System.out.printf("%sEscolha o colaborador:\n", newline);
+    public static void escolherColaborador() {
+        System.out.printf("\nEscolha o colaborador:\n");
         System.out.println("1. - Leandro");
         System.out.println("2. - Luís");
         opcaoColaborador = escolherOpcao(2);
