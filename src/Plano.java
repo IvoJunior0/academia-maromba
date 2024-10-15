@@ -1,5 +1,7 @@
 public class Plano {
     // Atributos
+    private static int contador;
+    private int codigo;
     public String nome;
     public double valor;
     public Aluno alunoCadastrado;
@@ -9,6 +11,8 @@ public class Plano {
     public Plano() {
         this.nome = "Não Cadastrado";
         this.valor = -1;
+        contador++;
+        this.codigo = contador;
     }
 
     // Métodos
@@ -19,8 +23,11 @@ public class Plano {
             System.out.println("\n===== INFORMAÇÕES DO PLANO =====");
             System.out.println("Nome do plano: " + this.nome);
             System.out.println("Valor do plano: R$" + this.valor);
+            System.out.println("Código do plano: " + this.codigo);
             System.out.println("Aluno: " + this.alunoCadastrado.getNome());
+            System.out.println("Código do Aluno: " + this.alunoCadastrado.getID());
             System.out.println("Colaborador: " + this.colaboradorCadastrado.getNome());
+            System.out.println("Código do colaborador: " + this.colaboradorCadastrado.getID());
         }
     }
 
@@ -65,5 +72,14 @@ public class Plano {
         double taxa = valorTaxa / 100;
         this.valor += this.valor * taxa;
         System.out.println("\nValor atualizado para R$" + this.valor);
+    }
+
+    // Getters e Setters
+    public int getID() {
+        return this.codigo;
+    }
+
+    public int getContagem() {
+        return contador;
     }
 }

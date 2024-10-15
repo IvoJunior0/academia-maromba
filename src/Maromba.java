@@ -51,9 +51,7 @@ public class Maromba {
                     valorPlano = escolherValor();
 
                     escolherAluno();
-
                     escolherColaborador();
-
                     settarObjetosAuxiliares();
 
                     plano1.cadastrarDados(nome, valorPlano, alunoAuxiliar, colaboradorAuxiliar);

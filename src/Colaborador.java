@@ -1,14 +1,20 @@
 public class Colaborador {
     // Atributos
+    private static int contador;
+    private int codigo;
     private String nome;
 
     // Construtores
     public Colaborador() {
         this.nome = "Auxiliar";
+        contador++;
+        this.codigo = contador;
     }
 
     public Colaborador(String nome) {
         this.nome = nome;
+        contador++;
+        this.codigo = contador;
     }
 
     // Getters e Setters
@@ -17,6 +23,14 @@ public class Colaborador {
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
+    }
+
+    public int getID() {
+        return this.codigo;
+    }
+
+    public int getContagem() {
+        return contador;
     }
 }
