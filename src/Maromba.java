@@ -27,9 +27,19 @@ public class Maromba {
     public static void main(String[] args) throws Exception {
         int opcaoMenu = 0;
 
+        System.out.println("=================================");
+        System.out.println("|           BEM-VINDOS          |");
+        System.out.println("|               A               |");
+        System.out.println("|       ACADEMIA MAROMBA        |");
+        System.out.println("|                               |");
+        System.out.println("|   SISTEMA DESENVOLVIDO POR:   |");
+        System.out.println("|          - Ivo Junior         |");
+        System.out.println("|          - Ana Graziele       |");
+        System.out.println("=================================");
+
         // Programa principal
         do {
-            System.out.println("\n=== *MENU DE OPÇÕES DO PLANO* ===");
+            System.out.println("\n=== OPÇÕES DE PLANO ===");
             System.out.println("1. - Cadastrar dados");
             System.out.println("2. - Exibir dados");
             System.out.println("3. - Alterar dados");
